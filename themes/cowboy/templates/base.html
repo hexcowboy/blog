@@ -35,6 +35,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/qrf6xbk.css">
+
     <!-- Atom and RSS feeds -->
     {% if FEED_ALL_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -65,11 +70,15 @@
 
   <body>
     <header>
-      <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
+      <div id="title">
+        <h1 class="title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+      </div>
       <nav id="socials">
-        <i class="fab fa-discord"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-github"></i>
+        {% for social in SOCIAL %}
+        <a href="{{ social[1] | lower }}" target="_blank">
+          <i class="fab fa-{{ social[0] | lower }}"></i>
+        </a>
+        {% endfor %}
       </nav>
     </header>
 

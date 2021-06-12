@@ -1,3 +1,140 @@
-h2 {
-  color: red;
+@font-face {
+    font-family: CaminoBold;
+    src: url('../fonts/ElCamino-Bold.otf');
+}
+
+@font-face {
+    font-family: CaminoSlim;
+    src: url('../fonts/ElCamino-Slim.otf');
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #222831;
+  color: #ececec;
+  font-family: "IBM Plex Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: soleil, monospace;
+  font-weight: 500;
+  text-rendering: optimizelegibility;
+}
+
+p {
+  font-size: 1.3rem;
+}
+
+body {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::selection {
+  background: #30475e;
+  padding: 5px;
+}
+
+button,
+a.button {
+  color: #ececec;
+  background-color: #30475e;
+
+  font-family: soleil,sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  text-align: center;
+  user-select: none;
+
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+/* Tables */
+
+table {
+  width: 100%;
+}
+
+th {
+  color: #ececec;
+  background-color: #30475e;
+
+  font-family: soleil,sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  text-align: center;
+
+  padding: 20px;
+  margin: 10px;
+}
+
+thead :first-child {
+  border-top-left-radius: 10px;
+}
+
+thead :last-child {
+  border-top-right-radius: 10px;
+}
+
+td {
+  margin: 10px;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #28303b;
+}
+
+/* Header */
+
+header,
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+header {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header #title h1,
+header #title h1 a,
+header #title h1 a:visited,
+header #title h1 a:active,
+header #title h1 a:hover {
+  margin: 0;
+  font-family: CaminoBold, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  white-space: nowrap;
+}
+
+nav a,
+nav a:visited,
+nav a:active,
+nav a:hover {
+  padding: 4px;
+  color: white;
+  text-decoration: none;
 }
