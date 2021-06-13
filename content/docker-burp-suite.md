@@ -1,4 +1,4 @@
-Title: Running BurpSuite in Docker
+Title: Running Burp Suite in Docker
 Date: 2021-06-13 10:30
 Category: Docker
 Tags: docker, burpsuite
@@ -71,10 +71,6 @@ docker run --rm \
 ```
 
 This command will run the container, expose port 8080 on the host to port 8080 on the container, and delete the container afterwards. You should see a new window open up in your X Server if you followed the setup instructions above.
-
-### Burp Proxy
-
-By default the container listens on port 8080 on all interfaces (see [`config/project_options.json`](config/project_options.json)). If you want to remap the port your Burp proxy uses, just change the Docker port argument to `-p <port>:8080` and configure Burp Suite to use `127.0.0.1:<port>` as the proxy.
 
 ### Verify that the proxy is working by running the following command on your host:
 

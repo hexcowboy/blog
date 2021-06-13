@@ -7,7 +7,7 @@
     <link rel="canonical" href="">
 
     <!-- Site meta tags for SEO -->
-    <title>hexcowboy - Running BurpSuite in Docker</title>
+    <title>hexcowboy - Running Burp Suite in Docker</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -90,8 +90,8 @@
     <main>
 <article>
   <section class="article-title">
-    <a href="https://hex.cowboy.dev/running-burpsuite-in-docker.html">
-      <h2>Running BurpSuite in Docker</h2>
+    <a href="https://hex.cowboy.dev/running-burp-suite-in-docker.html">
+      <h2>Running Burp Suite in Docker</h2>
     </a>
   </section>
 
@@ -148,8 +148,6 @@ docker image tag hexcowboy/burpsuite burpsuite
 </code></pre></div>
 
 <p>This command will run the container, expose port 8080 on the host to port 8080 on the container, and delete the container afterwards. You should see a new window open up in your X Server if you followed the setup instructions above.</p>
-<h3>Burp Proxy</h3>
-<p>By default the container listens on port 8080 on all interfaces (see <a href="config/project_options.json"><code>config/project_options.json</code></a>). If you want to remap the port your Burp proxy uses, just change the Docker port argument to <code>-p &lt;port&gt;:8080</code> and configure Burp Suite to use <code>127.0.0.1:&lt;port&gt;</code> as the proxy.</p>
 <h3>Verify that the proxy is working by running the following command on your host:</h3>
 <div class="highlight"><pre><span></span><code>curl -x http://127.0.0.1:8080 http://example.com
 </code></pre></div>
