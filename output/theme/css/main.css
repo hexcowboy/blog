@@ -1,5 +1,6 @@
 /* Theme: https://lh3.googleusercontent.com/2tz16tRWvWsNwxg22BmLGDpZ7Pp3SqAg6Zr10WUCbjeEJHFSBzkbb4gwkjIQ5m4rfYoSntR412o7bC7sr8Xi5-gpiciNiQyjssfNWQ=w1064-v0 */
 
+@import "pygment.css";
 @font-face {
   font-family: CaminoBold;
   src: url('../fonts/ElCamino-Bold.otf');
@@ -25,12 +26,16 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "IBM Plex Mono", monospace;
-  font-weight: 500;
+  font-weight: 700;
   text-rendering: optimizelegibility;
 }
 
 p {
   font-size: 1.3rem;
+}
+
+a, a:visited, a:active, a:hover {
+  color: #e4ceff;
 }
 
 body {
@@ -39,24 +44,38 @@ body {
   margin-right: auto;
 }
 
-::selection {
-  background: #30475e;
-  padding: 5px;
+blockquote {
+  border-left: 10px solid #222;
+  padding-left: 1rem;
+  margin: 0;
 }
 
-button, a.button {
-  color: #ececec;
-  background-color: #30475e;
-  font-family: soleil, sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  text-decoration: none;
-  text-align: center;
-  user-select: none;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  cursor: pointer;
+ul li::before {
+  content: "• ";
+  color: white;
+}
+
+ol {
+  list-style: none;
+  counter-reset: counter;
+}
+
+ol li {
+  counter-increment: counter;
+}
+
+ol li::before {
+  content: counter(counter) ". ";
+  color: white;
+}
+
+p code {
+  background-color: #333;
+  border-radius: 3px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  padding: 0 .5rem;
+  user-select: all;
 }
 
 /* Tables */
@@ -67,22 +86,14 @@ table {
 
 th {
   color: #ececec;
-  background-color: #30475e;
-  font-family: soleil, sans-serif;
-  font-weight: 500;
+  background-color: #333;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
   font-style: normal;
   text-decoration: none;
   text-align: center;
   padding: 20px;
   margin: 10px;
-}
-
-thead :first-child {
-  border-top-left-radius: 10px;
-}
-
-thead :last-child {
-  border-top-right-radius: 10px;
 }
 
 td {
@@ -92,8 +103,12 @@ td {
   padding-bottom: 10px;
 }
 
+tbody tr {
+  background-color: #222;
+}
+
 tbody tr:nth-child(even) {
-  background-color: #28303b;
+  background-color: #333;
 }
 
 /* Header */
@@ -169,6 +184,20 @@ main .article-summary p {
   margin-top: .5rem;
 }
 
+/* Article Content */
+
+.article-content pre {
+  padding: 24px;
+  max-width: 100%;
+  overflow: scroll;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.article-content img {
+  max-width: 100%
+}
+
 /* Paginator */
 
 .paginator {
@@ -192,7 +221,7 @@ footer {
 }
 
 footer ::selection {
-  background-color: #222831;
+  background-color: #ccc;
 }
 
 footer a, footer a:hover, footer a:visited, footer a:active {

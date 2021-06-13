@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ article.title | striptags }}{% endblock %}
+
+{% block content %}
+<article>
+  <section class="article-title">
+    <a href="{{ SITEURL }}/{{ article.url }}">
+      <h2>{{ article.title | striptags }}</h2>
+    </a>
+  </section>
+
+  <section class="article-info">
+    <time class="published-date" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time>
+    <span> · </span>
+    <time class="read-time">{{ article.readtime_string }}</time>
+  </section>
+
+  <section class="article-content">
+    {{ article.content }}
+  </section>
+</article>
+{% endblock %}
