@@ -14,12 +14,7 @@ from pelicanconf import *
 SITEURL = "https://hex.cowboy.dev"
 RELATIVE_URLS = False
 
-# FEED_ALL_ATOM = "feeds/all.atom.xml"
-# CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
+FEED_ALL_ATOM = "feeds/all.atom.xml"
+CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
-
-# Following items are often useful when publishing
-
-GOOGLE_ANALYTICS = "G-XVN0X0SFF1"
-TWITTER_USERNAME = "hexcowboy"

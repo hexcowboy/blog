@@ -4,7 +4,7 @@ from datetime import date
 
 AUTHOR = "hexcowboy"
 SITENAME = "hexcowboy"
-SITEURL = ''
+SITEURL = ""
 
 THEME = "themes/cowboy"
 PATH = "content"
