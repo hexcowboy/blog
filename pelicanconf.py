@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
+from datetime import date
 
 AUTHOR = "hexcowboy"
 SITENAME = "hexcowboy"
-# SITEURL = 'https://cowboy.dev'
+SITEURL = ''
 
 THEME = "themes/cowboy"
 PATH = "content"
@@ -28,6 +29,9 @@ SOCIAL = (
     ("GitHub", "https://github.com/hexcowboy"),
     ("Twitter", "https://twitter.com/hexcowboy"),
 )
+
+COPYRIGHT_YEAR = date.today().year
+SITE_CONTACT = ("@hexcowboy", "https://twitter.com/hexcowboy")
 
 DEFAULT_PAGINATION = 10
 

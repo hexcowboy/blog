@@ -38,7 +38,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.typekit.net/qrf6xbk.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
     <!-- Atom and RSS feeds -->
     {% if FEED_ALL_ATOM %}
@@ -82,10 +82,22 @@
       </nav>
     </header>
 
+    <main>
     {% block content %}
     {% endblock %}
+    </main>
 
     <footer>
+      <section id="footer-title">
+        <p>Copyright © {{ COPYRIGHT_YEAR }}</p>
+      </section>
+
+      <section id="footer-links">
+        <a href="{{ SITE_CONTACT[1] }}" target="_blank">
+          <p class="twitter-handle">{{ SITE_CONTACT[0] }}</p>
+        </a>
+      </section>
     </footer>
+
   </body>
 </html>

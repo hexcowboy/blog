@@ -1,25 +1,30 @@
+/* Theme: https://lh3.googleusercontent.com/2tz16tRWvWsNwxg22BmLGDpZ7Pp3SqAg6Zr10WUCbjeEJHFSBzkbb4gwkjIQ5m4rfYoSntR412o7bC7sr8Xi5-gpiciNiQyjssfNWQ=w1064-v0 */
+
 @font-face {
-    font-family: CaminoBold;
-    src: url('../fonts/ElCamino-Bold.otf');
+  font-family: CaminoBold;
+  src: url('../fonts/ElCamino-Bold.otf');
 }
 
 @font-face {
-    font-family: CaminoSlim;
-    src: url('../fonts/ElCamino-Slim.otf');
+  font-family: CaminoSlim;
+  src: url('../fonts/ElCamino-Slim.otf');
 }
 
 html, body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   max-width: 100%;
+  min-height: 100vh;
+  background-color: #121212;
+  color: white;
   overflow-x: hidden;
-  background-color: #222831;
-  color: #ececec;
   font-family: "IBM Plex Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: soleil, monospace;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   text-rendering: optimizelegibility;
 }
@@ -39,22 +44,18 @@ body {
   padding: 5px;
 }
 
-button,
-a.button {
+button, a.button {
   color: #ececec;
   background-color: #30475e;
-
-  font-family: soleil,sans-serif;
+  font-family: soleil, sans-serif;
   font-weight: 500;
   font-style: normal;
   text-decoration: none;
   text-align: center;
   user-select: none;
-
   padding: 20px;
   margin: 10px;
   border-radius: 10px;
-
   cursor: pointer;
 }
 
@@ -67,13 +68,11 @@ table {
 th {
   color: #ececec;
   background-color: #30475e;
-
-  font-family: soleil,sans-serif;
+  font-family: soleil, sans-serif;
   font-weight: 500;
   font-style: normal;
   text-decoration: none;
   text-align: center;
-
   padding: 20px;
   margin: 10px;
 }
@@ -99,13 +98,13 @@ tbody tr:nth-child(even) {
 
 /* Header */
 
-header,
-footer {
+header, main, footer {
   display: flex;
   justify-content: space-between;
+  flex-shrink: 0;
   padding: 20px;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 header {
@@ -113,11 +112,7 @@ header {
   flex-wrap: wrap;
 }
 
-header #title h1,
-header #title h1 a,
-header #title h1 a:visited,
-header #title h1 a:active,
-header #title h1 a:hover {
+header #title h1, header #title h1 a, header #title h1 a:visited, header #title h1 a:active, header #title h1 a:hover {
   margin: 0;
   font-family: CaminoBold, sans-serif;
   font-weight: 800;
@@ -130,11 +125,76 @@ header #title h1 a:hover {
   white-space: nowrap;
 }
 
-nav a,
-nav a:visited,
-nav a:active,
-nav a:hover {
+/* Navigation bar */
+
+nav a, nav a:visited, nav a:active, nav a:hover {
   padding: 4px;
   color: white;
+  font-size: 1.2rem;
   text-decoration: none;
+}
+
+/* Article list */
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main li {
+  display: block;
+}
+
+main .article-title * {
+  display: inline-block;
+  color: #bb86fc;
+  margin-bottom: .3rem;
+  font-family: CaminoSlim;
+  font-size: 2rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+main .article-title * :hover {
+  border-color: #bb86fc;
+  transition: border-color .2s ease;
+}
+
+main .article-info * {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+main .article-summary p {
+  margin-top: .5rem;
+}
+
+/* Paginator */
+
+.paginator {
+  display: flex;
+  justify-content: center;
+}
+
+.paginator * {
+  margin: 20px;
+  padding: 20px;
+  background-color: #222222;
+  color: white;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  color: #666;
+}
+
+footer ::selection {
+  background-color: #222831;
+}
+
+footer a, footer a:hover, footer a:visited, footer a:active {
+  color: #666;
 }

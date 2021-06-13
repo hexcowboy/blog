@@ -6,24 +6,34 @@
 {% for article in articles_page.object_list %}
 <li>
   <article>
-    <a href="{{ SITEURL }}/{{ article.url }}">
-      <h2 class="article-title">{{ article.title | striptags }}</h2>
-    </a>
-
-    <section class="article-author">
-      {% for author in article.authors %}
-      <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-      {% endfor %}
+    <section class="article-title">
+      <a href="{{ SITEURL }}/{{ article.url }}">
+        <h2>{{ article.title | striptags }}</h2>
+      </a>
     </section>
 
     <section class="article-info">
       <time class="published" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time>
+      <span> · </span>
+      <time>{{ article.readtime_string }}</time>
     </section>
 
     <section class="article-summary">
-      <p>{{ article.summary }}</p>
+      <p>{{ article.description }}</p>
     </section>
   </article>
 </li>
 {% endfor %}
+
+{% if DEFAULT_PAGINATION %}
+<section class="paginator">
+  {% if articles_page.has_previous() %}
+  <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">Newer</a>
+  {% endif %}
+  {% if articles_page.has_next() %}
+  <a href="{{ SITEURL }}/{{ articles_next_page.url }}">Older</a>
+  {% endif %}
+</section>
+{% endif %}
+
 {% endblock %}

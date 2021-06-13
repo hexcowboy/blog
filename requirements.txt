@@ -1,4 +1,5 @@
 pelican[markdown]
+pelican-readtime
 
 # Tasks
 nox
