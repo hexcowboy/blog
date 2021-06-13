@@ -129,7 +129,7 @@ header {
 
 header #title h1, header #title h1 a, header #title h1 a:visited, header #title h1 a:active, header #title h1 a:hover {
   margin: 0;
-  font-family: CaminoBold, sans-serif;
+  font-family: "CaminoBold", sans-serif;
   font-weight: 800;
   font-style: normal;
   font-size: 3rem;
@@ -138,6 +138,11 @@ header #title h1, header #title h1 a, header #title h1 a:visited, header #title 
   text-decoration: none;
   color: white;
   white-space: nowrap;
+}
+
+header .logo {
+  height: 150px;
+  width: 150px;
 }
 
 /* Navigation bar */
@@ -165,7 +170,7 @@ main .article-title * {
   display: inline-block;
   color: #bb86fc;
   margin-bottom: .3rem;
-  font-family: CaminoSlim;
+  font-family: "CaminoSlim", monospace;
   font-size: 2rem;
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -226,4 +231,10 @@ footer ::selection {
 
 footer a, footer a:hover, footer a:visited, footer a:active {
   color: #666;
+}
+
+#footer-logo {
+  align-self: center;
+  width: 200px;
+  height: 200px;
 }

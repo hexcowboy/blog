@@ -30,6 +30,17 @@
     <meta name="twitter:image" content="">
     <meta name="twitter:domain" content="">
 
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon-16x16.png">
+    <link rel="manifest" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/site.webmanifest">
+    <link rel="mask-icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/safari-pinned-tab.svg" color="#603cba">
+    <link rel="shortcut icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="msapplication-config" content="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/browserconfig.xml">
+    <meta name="theme-color" content="#603cba">
+
     <!-- Assets -->
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -71,7 +82,10 @@
   <body>
     <header>
       <div id="title">
-        <h1 class="title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+        <!-- <h1 class="title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1> -->
+        <a href="{{ SITEURL }}/">
+          <img class="logo" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/cowboy.svg">
+        </a>
       </div>
       <nav id="socials">
         {% for social in SOCIAL %}
@@ -98,6 +112,10 @@
         </a>
       </section>
     </footer>
+
+    <section id="footer-logo">
+      <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/jaguar.svg">
+    </section>
 
   </body>
 </html>
