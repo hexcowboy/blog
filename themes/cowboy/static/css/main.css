@@ -65,17 +65,9 @@ ol li {
 }
 
 ol li::before {
+  margin-left: -2ch;
   content: counter(counter) ". ";
   color: white;
-}
-
-p code {
-  background-color: #333;
-  border-radius: 3px;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 400;
-  padding: 0 .5rem;
-  user-select: all;
 }
 
 /* Tables */
@@ -164,6 +156,7 @@ main {
 
 main li {
   display: block;
+  margin-bottom: 1rem;
 }
 
 main .article-title * {
@@ -191,6 +184,10 @@ main .article-summary p {
 
 /* Article Content */
 
+.article-content {
+  font-size: 1.3rem;
+}
+
 .article-content pre {
   padding: 24px;
   max-width: 100%;
@@ -201,6 +198,17 @@ main .article-summary p {
 
 .article-content img {
   max-width: 100%
+}
+
+.article-content *:not(pre)>code {
+  background-color: #333;
+  border-radius: 3px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0 .5rem;
+  user-select: all;
+  line-break: anywhere;
 }
 
 /* Paginator */
@@ -235,6 +243,6 @@ footer a, footer a:hover, footer a:visited, footer a:active {
 
 #footer-logo {
   align-self: center;
-  width: 200px;
-  height: 200px;
+  width: 20%;
+  height: 20%;
 }

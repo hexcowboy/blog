@@ -11,7 +11,9 @@
   </section>
 
   <section class="article-info">
-    <time class="published-date" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time>
+    <span>{{ article.author }}</span>
+    <span> · </span>
+    <time class="published-date" datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}  </time>
     <span> · </span>
     <time class="read-time">{{ article.readtime_string }}</time>
   </section>

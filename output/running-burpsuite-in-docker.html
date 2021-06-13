@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Browser meta for viewability -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="">
+
+    <!-- Site meta tags for SEO -->
+    <title>hexcowboy - Running BurpSuite in Docker</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Facebook Open Graph tags -->
+    <meta property="og:title" content="" />
+    <meta property="og:Section" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="fb:admins" content="" />
+    <meta property="og:description" content="" />
+
+    <!-- Twitter tags -->
+    <meta property="twitter:account_id" content="" />
+    <meta name="twitter:card" content="">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:domain" content="">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cowboy.dev/theme/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cowboy.dev/theme/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cowboy.dev/theme/images/favicon-16x16.png">
+    <link rel="manifest" href="https://cowboy.dev/theme/images/site.webmanifest">
+    <link rel="mask-icon" href="https://cowboy.dev/theme/images/safari-pinned-tab.svg" color="#603cba">
+    <link rel="shortcut icon" href="https://cowboy.dev/theme/images/favicon.ico">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="msapplication-config" content="https://cowboy.dev/theme/images/browserconfig.xml">
+    <meta name="theme-color" content="#603cba">
+
+    <!-- Assets -->
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cowboy.dev/theme/css/main.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Atom and RSS feeds -->
+
+  </head>
+
+  <body>
+    <header>
+      <div id="title">
+        <!-- <h1 class="title"><a href="https://cowboy.dev/">hexcowboy</a></h1> -->
+        <a href="https://cowboy.dev/">
+          <img class="logo" src="https://cowboy.dev/theme/images/cowboy.svg">
+        </a>
+      </div>
+      <nav id="socials">
+        <a href="https://discordapp.com/users/418557177825853443" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://github.com/hexcowboy" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/hexcowboy" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+<article>
+  <section class="article-title">
+    <a href="https://cowboy.dev/running-burpsuite-in-docker.html">
+      <h2>Running BurpSuite in Docker</h2>
+    </a>
+  </section>
+
+  <section class="article-info">
+    <span>hexcowboy</span>
+    <span> · </span>
+    <time class="published-date" datetime="2021-06-13T10:30:00-05:00">Sun 13 June 2021  </time>
+    <span> · </span>
+    <time class="read-time">2 minutes</time>
+  </section>
+
+  <section class="article-content">
+    <p>On my soul quest to create <a href="https://github.com/hexcowboy/jackbox">a fully featured penetration test Docker container</a>, I came across a few issues.</p>
+<ol>
+<li>Docker doesn't run graphical applications on it's own</li>
+<li>The network proxy won't work unless the <code>8080</code> port is exposed</li>
+<li>You can't just install Burp Suite with <code>apt-get install burpsuite</code></li>
+</ol>
+<p>Apart from these issues, there isn't a maintained Burp Suite Community repository in the Docker Hub or on GitHub. I did manage to find a maintained <a href="https://github.com/koenrh/docker-burp-suite-pro">Burp Suite Professional Docker repo</a> on GitHub which I ended up forking.</p>
+<h2>Setup</h2>
+<p>To make this Docker container run GUI applications, we can make use of an X Server. On macOS, I used <a href="https://www.xquartz.org/">XQuartz</a> which was as simple as running</p>
+<div class="highlight"><pre><span></span><code>brew install --cask xquartz
+</code></pre></div>
+
+<p>For accepting connections on local host, one setting needs to be changed. In the XQuartz settings, enable <code>XQuartz</code> &gt; <code>Preferences</code> &gt; <code>Security</code> &gt; <code>Allow connections from network clients</code>.</p>
+<p><img alt="Allow connections from network clients needs to be enabled in the XQuartz settings" src="https://user-images.githubusercontent.com/8162609/121715279-4a9a3700-caa4-11eb-8205-fff0fb5dfbf6.png"></p>
+<p>Now the X Server can be started as easily as running this command:</p>
+<div class="highlight"><pre><span></span><code>xhost + <span class="m">127</span>.0.0.1
+</code></pre></div>
+
+<p><em>Note that you need to run this command from your host terminal, not the XQuartz terminal.</em></p>
+<p>I won't go into covering how to run a local X Server on Windows or Linux, because Google <strong>does</strong> exist.</p>
+<h2>Running Burp Suite</h2>
+<h3>From Docker Hub</h3>
+<p>The prebuilt container can be retrieved from <a href="https://hub.docker.com/repository/docker/hexcowboy/burpsuite">Docker Hub</a>.</p>
+<div class="highlight"><pre><span></span><code>docker pull hexcowboy/burpsuite
+docker image tag hexcowboy/burpsuite burpsuite
+</code></pre></div>
+
+<h3>Building the image</h3>
+<p>First, clone this <a href="https://github.com/hexcowboy/docker-burp-suite-community">GitHub repository</a> on your host:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/hexcowboy/docker-burp-suite-community.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> docker-burp-suite-community
+</code></pre></div>
+
+<p>Then, build the Docker image using the following command.</p>
+<div class="highlight"><pre><span></span><code>docker build -t burpsuite .
+</code></pre></div>
+
+<p>While building the image, the latest JAR (Java ARchive) of Burp Suite Community is pulled from the PortSwigger portal.</p>
+<h2>Using Burp Suite Community</h2>
+<div class="highlight"><pre><span></span><code>docker run --rm <span class="se">\</span>
+  -p <span class="m">8080</span>:8080 <span class="se">\</span>
+  burpsuite
+</code></pre></div>
+
+<p>This command will run the container, expose port 8080 on the host to port 8080 on the container, and delete the container afterwards. You should see a new window open up in your X Server if you followed the setup instructions above.</p>
+<h3>Burp Proxy</h3>
+<p>By default the container listens on port 8080 on all interfaces (see <a href="config/project_options.json"><code>config/project_options.json</code></a>). If you want to remap the port your Burp proxy uses, just change the Docker port argument to <code>-p &lt;port&gt;:8080</code> and configure Burp Suite to use <code>127.0.0.1:&lt;port&gt;</code> as the proxy.</p>
+<h3>Verify that the proxy is working by running the following command on your host:</h3>
+<div class="highlight"><pre><span></span><code>curl -x http://127.0.0.1:8080 http://example.com
+</code></pre></div>
+
+<h2>Conclusion</h2>
+<p>Software can easily be Dockerized. Burp Suite Community could likely take 5+ minutes to install manually, but by pulling a prebuilt Docker image it can take just seconds.</p>
+<p>Don't limit yourself to just using Docker for my-first-blog applications.</p>
+  </section>
+</article>
+    </main>
+
+    <footer>
+      <section id="footer-title">
+        <p>Copyright © 2021</p>
+      </section>
+
+      <section id="footer-links">
+        <a href="https://twitter.com/hexcowboy" target="_blank">
+          <p class="twitter-handle">@hexcowboy</p>
+        </a>
+      </section>
+    </footer>
+
+    <section id="footer-logo">
+      <img src="https://cowboy.dev/theme/images/jaguar.svg">
+    </section>
+
+  </body>
+</html>
