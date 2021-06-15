@@ -23,7 +23,7 @@ brew install --cask xquartz
 
 For accepting connections on local host, one setting needs to be changed. In the XQuartz settings, enable `XQuartz` > `Preferences` > `Security` > `Allow connections from network clients`.
 
-![Allow connections from network clients needs to be enabled in the XQuartz settings](https://raw.githubusercontent.com/hexcowboy/blog/main/content/images/allow-connections.png)
+![Allow connections from network clients needs to be enabled in the XQuartz settings]({static}/images/allow-connections.png)
 
 Now the X Server can be started by running this command:
 
