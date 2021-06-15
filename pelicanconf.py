@@ -20,9 +20,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-# LINKS = (('About', ''),)
-
 # Social widget
 SOCIAL = (
     ("Discord", "https://discordapp.com/users/418557177825853443"),
@@ -38,4 +35,4 @@ DEFAULT_PAGINATION = 10
 PLUGINS = ["readtime"]
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
