@@ -3,9 +3,9 @@ Date: 2021-06-13 10:30
 Category: Docker
 Tags: docker, burpsuite
 Author: hexcowboy
-Summary: Quickly install a Burp Suite through Docker without having to install in on your host machine.
+Summary: Quickly install Burp Suite on Docker in a matter of seconds, not minutes.
 
-On my soul quest to create [a fully featured penetration test Docker container](https://github.com/hexcowboy/jackbox), I came across a few issues.
+On my soul quest to create [a fully featured penetration testing Docker container](https://github.com/hexcowboy/saloon), I came across a few issues.
 
 1. Docker doesn't run graphical applications on it's own
 2. The network proxy won't work unless the `8080` port is exposed
@@ -25,7 +25,7 @@ For accepting connections on local host, one setting needs to be changed. In the
 
 ![Allow connections from network clients needs to be enabled in the XQuartz settings](https://user-images.githubusercontent.com/8162609/121715279-4a9a3700-caa4-11eb-8205-fff0fb5dfbf6.png)
 
-Now the X Server can be started as easily as running this command:
+Now the X Server can be started by running this command:
 
 ```bash
 xhost + 127.0.0.1

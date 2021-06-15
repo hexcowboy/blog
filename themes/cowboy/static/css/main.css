@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-size: 1.3rem;
+  line-height: 1.6rem;
 }
 
 a, a:visited, a:active, a:hover {
@@ -244,5 +245,5 @@ footer a, footer a:hover, footer a:visited, footer a:active {
 #footer-logo {
   align-self: center;
   width: 20%;
-  height: 20% ;
+  height: 20%;
 }
