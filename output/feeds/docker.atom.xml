@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>hexcowboy - Docker</title><link href="https://hex.cowboy.dev/" rel="alternate"></link><link href="https://hex.cowboy.dev/feeds/docker.atom.xml" rel="self"></link><id>https://hex.cowboy.dev/</id><updated>2021-06-13T10:30:00-05:00</updated><entry><title>Running Burp Suite in Docker</title><link href="https://hex.cowboy.dev/running-burp-suite-in-docker.html" rel="alternate"></link><published>2021-06-13T10:30:00-05:00</published><updated>2021-06-13T10:30:00-05:00</updated><author><name>hexcowboy</name></author><id>tag:hex.cowboy.dev,2021-06-13:/running-burp-suite-in-docker.html</id><summary type="html">&lt;p&gt;Quickly install a Burp Suite through Docker without having to install in on your host machine.&lt;/p&gt;</summary><content type="html">&lt;p&gt;On my soul quest to create &lt;a href="https://github.com/hexcowboy/jackbox"&gt;a fully featured penetration test Docker container&lt;/a&gt;, I came across a few issues.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>hexcowboy - Docker</title><link href="https://hex.cowboy.dev/" rel="alternate"></link><link href="https://hex.cowboy.dev/feeds/docker.atom.xml" rel="self"></link><id>https://hex.cowboy.dev/</id><updated>2021-06-13T10:30:00-05:00</updated><entry><title>Running Burp Suite in Docker</title><link href="https://hex.cowboy.dev/running-burp-suite-in-docker.html" rel="alternate"></link><published>2021-06-13T10:30:00-05:00</published><updated>2021-06-13T10:30:00-05:00</updated><author><name>hexcowboy</name></author><id>tag:hex.cowboy.dev,2021-06-13:/running-burp-suite-in-docker.html</id><summary type="html">&lt;p&gt;Quickly install Burp Suite on Docker in a matter of seconds, not minutes.&lt;/p&gt;</summary><content type="html">&lt;p&gt;On my soul quest to create &lt;a href="https://github.com/hexcowboy/saloon"&gt;a fully featured penetration testing Docker container&lt;/a&gt;, I came across a few issues.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Docker doesn't run graphical applications on it's own&lt;/li&gt;
 &lt;li&gt;The network proxy won't work unless the &lt;code&gt;8080&lt;/code&gt; port is exposed&lt;/li&gt;
@@ -13,7 +13,7 @@
 
 &lt;p&gt;For accepting connections on local host, one setting needs to be changed. In the XQuartz settings, enable &lt;code&gt;XQuartz&lt;/code&gt; &amp;gt; &lt;code&gt;Preferences&lt;/code&gt; &amp;gt; &lt;code&gt;Security&lt;/code&gt; &amp;gt; &lt;code&gt;Allow connections from network clients&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Allow connections from network clients needs to be enabled in the XQuartz settings" src="https://user-images.githubusercontent.com/8162609/121715279-4a9a3700-caa4-11eb-8205-fff0fb5dfbf6.png"&gt;&lt;/p&gt;
-&lt;p&gt;Now the X Server can be started as easily as running this command:&lt;/p&gt;
+&lt;p&gt;Now the X Server can be started by running this command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xhost + &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
