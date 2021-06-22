@@ -82,4 +82,4 @@ curl -x http://127.0.0.1:8080 http://example.com
 
 Software can easily be Dockerized. Burp Suite Community could likely take 5+ minutes to install manually, but by pulling a prebuilt Docker image it can take just seconds.
 
-Don't limit yourself to just using Docker for my-first-blog applications.
+The future of the west is Dockerized.
