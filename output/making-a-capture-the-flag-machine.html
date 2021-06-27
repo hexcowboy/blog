@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Browser meta for viewability -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="">
+
+    <!-- Site meta tags for SEO -->
+    <title>hexcowboy - Making a Capture the Flag Machine</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Facebook Open Graph tags -->
+    <meta property="og:title" content="" />
+    <meta property="og:Section" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="fb:admins" content="" />
+    <meta property="og:description" content="" />
+
+    <!-- Twitter tags -->
+    <meta property="twitter:account_id" content="" />
+    <meta name="twitter:card" content="">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:domain" content="">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cowboy.dev/theme/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cowboy.dev/theme/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cowboy.dev/theme/images/favicon-16x16.png">
+    <link rel="manifest" href="https://cowboy.dev/theme/images/site.webmanifest">
+    <link rel="mask-icon" href="https://cowboy.dev/theme/images/safari-pinned-tab.svg" color="#603cba">
+    <link rel="shortcut icon" href="https://cowboy.dev/theme/images/favicon.ico">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="msapplication-config" content="https://cowboy.dev/theme/images/browserconfig.xml">
+    <meta name="theme-color" content="#603cba">
+
+    <!-- Assets -->
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cowboy.dev/theme/css/main.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Atom and RSS feeds -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVN0X0SFF1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XVN0X0SFF1');
+    </script>
+
+  </head>
+
+  <body>
+    <header>
+      <div id="title">
+        <!-- <h1 class="title"><a href="https://cowboy.dev/">hexcowboy</a></h1> -->
+        <a href="https://cowboy.dev/">
+          <img class="logo" src="https://cowboy.dev/theme/images/cowboy.svg">
+        </a>
+      </div>
+      <nav id="socials">
+        <a href="https://discordapp.com/users/418557177825853443" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://github.com/hexcowboy" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/hexcowboy" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+<article>
+  <section class="article-title">
+    <a href="https://cowboy.dev/making-a-capture-the-flag-machine.html">
+      <h2>Making a Capture the Flag Machine</h2>
+    </a>
+  </section>
+
+  <section class="article-info">
+    <span>hexcowboy</span>
+    <span> · </span>
+    <time class="published-date" datetime="2021-06-26T20:30:00-05:00">Sat 26 June 2021  </time>
+    <span> · </span>
+    <time class="read-time">6 minutes</time>
+  </section>
+
+  <section class="article-content">
+    <p>This week I spent the majority of my time completing a machine for Offensive Security Proving Grounds. I figured this would be an easy task, but it ended up taking a lot more time than I had anticipated.</p>
+<p>Offensive Security recently started accepting user submissions. Hack the Box also does this except with different criteria and pay grades. I recommend taking a look at both programs to see which platform you prefer to create for.</p>
+<h2>Requirements</h2>
+<p>This is no easy task without some previous knowledge of system scripting and automation. At a <em>bare minimum</em>, I would recommend having the following skills:
+- Bash scripting
+- Basic networking
+- Build automation</p>
+<h2>Plan</h2>
+<p>This process was entirely new to me. I decided to jump right away into developing an exploit I had read about earlier this week involving <a href="https://sick.codes/sick-2021-011">improper input validation in NPM</a>.  I would need to develop an entirely custom application just to provide 1 attack vector. After about 4 hours I realized that developing an application and writing an exploit just for the sake of using it for a CTF box is <strong>not a sustainable method</strong>.</p>
+<p>I decided to structure my plan a bit better, to spend my time more efficiently. After all, being paid $500 sounds nice until you work out your hourly wage to be less than $10.</p>
+<p>Here is the attack vector structure I eventually came up with:</p>
+<ol>
+<li>The attacker gains an initial foothold with a <strong>pre-existing</strong> public exploit</li>
+<li>The attacker gains lateral privilege through a system misconfiguration</li>
+<li>The attacker gains root privileges after exploiting a <strong>pre-existing</strong> public exploit</li>
+</ol>
+<h2>Vector 1 - Public Authenticated Remote Exploit (and Default Credentials @solarwinds)</h2>
+<p>My most valuable resource for this phase was <a href="https://www.exploit-db.com/">Exploit Database</a>. I ended up choosing an exploit for a CRM application. The coolest thing about doing this is that I have <em>no idea</em> what a CRM is, but as long as it's vulnerable I can use it.</p>
+<p>The CRM ended up having a public Docker image hosted on Docker Hub. The setup was extremely easy and I could set up the first vector just by creating a <code>docker-compose</code> file which was already provided by the application.</p>
+<p>I decided to leave the default credentials and make that part of the first vector. The next part just involved the attacker executing the public exploit (which was an authenticated exploit), et voilà. First vector finished.</p>
+<h2>Vector 2 - Container Breakout through misconfiguration</h2>
+<p>I decided to let the second vector play off of the first- find a way to exploit the Docker container.</p>
+<p>I find Docker breakouts a bit cheesy because they are so popular in CTFs and are easily exploitable with tools like <a href="https://github.com/brompwnie/botb">botb</a>. Instead, I decided to make the breakout involve and improper mount.</p>
+<p>Basically when a Docker container is run, you can provide a mount that shares files between the host operating system and the container. I made the Docker container mount <strong>from</strong> the host's <code>/home/user</code> folder <strong>to</strong> the application configuration.</p>
+<p>I'm not entirely sure if anybody does this, but it's very probable since many system admins will create a user specifically for a Docker container.</p>
+<p>This means that effectively the user can put their SSH key into the .ssh folder and get an SSH session as the user who started the container.</p>
+<h2>Vector 3 - Privilege Escalation through a Linux bug</h2>
+<p>This was the most fun part of the process. I had read about the <a href="https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/">polkit exploit</a> that has been present in Linux distros since around 2015. The problem with installing vulnerable software after it's patched is resolving dependencies for downgrading an old package.</p>
+<p>For example, on Ubuntu 20.04, polkit was patched as version <code>ubuntu1.1</code>, where the vulnerable version is <code>ubuntu1</code>. The exploit also depended on <code>accountsservice</code> and <code>gnome-control-center</code> being installed.</p>
+<p>When you downgrade one, the dependencies change for all. This caused a huge headache because I didn't know how to resolve all the dependencies to just downgrade <code>polkit</code>. I ended up finding a solution to this by installing <code>apt install aptitude</code> and running the install command like <code>aptitude install policykit-1=ubuntu1 accountsservice gnome-control-center</code> (or something similar, I can't remember the actual package names and version). This tools resolved all the dependencies and with that the final vector was complete.</p>
+<h2>Adding Required Firewall Rules and Flags</h2>
+<p>The nice part about the Offensive Security program is that they provide you with a ZIP file that has an example build script. All I needed to do was copy some of the script and add it after my vectors. The code in question looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span>  <span class="s2">&quot;[+] Configuring firewall&quot;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Installing iptables&quot;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;iptables-persistent iptables-persistent/autosave_v4 boolean false&quot;</span> <span class="p">|</span> debconf-set-selections
+<span class="nb">echo</span>  <span class="s2">&quot;iptables-persistent iptables-persistent/autosave_v6 boolean false&quot;</span> <span class="p">|</span> debconf-set-selections
+apt-get install -y iptables-persistent
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Applying inbound firewall rules&quot;</span>
+iptables -I INPUT <span class="m">1</span> -i lo -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -p tcp --dport <span class="m">22</span> -j ACCEPT
+iptables -A INPUT -p tcp --dport <span class="m">80</span> -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT
+iptables -A INPUT -j DROP
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Applying outbound firewall rules&quot;</span>
+iptables -A OUTPUT -o lo -j ACCEPT
+iptables -A OUTPUT -p tcp --sport <span class="m">22</span> -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --dport <span class="m">53</span> -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p udp --dport <span class="m">53</span> -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --dport <span class="m">80</span> -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport <span class="m">80</span> -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+iptables -A OUTPUT -j DROP
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Saving firewall rules&quot;</span>
+service netfilter-persistent save
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Disabling IPv6&quot;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;net.ipv6.conf.all.disable_ipv6 = 1&quot;</span> &gt;&gt; /etc/sysctl.conf
+<span class="nb">echo</span>  <span class="s2">&quot;net.ipv6.conf.default.disable_ipv6 = 1&quot;</span> &gt;&gt; /etc/sysctl.conf
+sed -i <span class="s1">&#39;s/GRUB_CMDLINE_LINUX_DEFAULT=&quot;&quot;/GRUB_CMDLINE_LINUX_DEFAULT=&quot;ipv6.disable=1&quot;/&#39;</span> /etc/default/grub
+sed -i <span class="s1">&#39;s/GRUB_CMDLINE_LINUX=&quot;&quot;/GRUB_CMDLINE_LINUX=&quot;ipv6.disable=1&quot;/&#39;</span> /etc/default/grub
+update-grub
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Configuring hostname&quot;</span>
+hostnamectl set-hostname wales
+cat <span class="s">&lt;&lt;  EOF &gt; /etc/hosts</span>
+<span class="s">127.0.0.1 localhost</span>
+<span class="s">127.0.0.1 wales</span>
+<span class="s">EOF</span>
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Disabling history files&quot;</span>
+ln -sf /dev/null /home/<span class="nv">$USER</span>/.bash_history
+ln -sf /dev/null /root/.bash_history
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Setting passwords&quot;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;root:--&quot;</span> <span class="p">|</span> chpasswd
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Dropping flags&quot;</span>
+<span class="nb">echo</span>  <span class="s2">&quot;--&quot;</span> &gt; /root/proof.txt
+<span class="nb">echo</span>  <span class="s2">&quot;--&quot;</span> &gt; /home/<span class="nv">$USER</span>/local.txt
+chmod <span class="m">0600</span> /root/proof.txt
+chmod <span class="m">0644</span> /home/<span class="nv">$USER</span>/local.txt
+chown <span class="nv">$USER</span>:<span class="nv">$USER</span> /home/<span class="nv">$USER</span>/local.txt
+
+<span class="nb">echo</span>  <span class="s2">&quot;[+] Cleaning up&quot;</span>
+rm -rf /build.sh
+rm -rf /root/.cache
+rm -rf /root/.viminfo
+find /var/log -type f -exec sh -c <span class="s2">&quot;cat /dev/null &gt; {}&quot;</span>  <span class="se">\;</span>
+</code></pre></div>
+
+<h2>Building the Image</h2>
+<p>My initial submission just included the build script, but someone from the team contacted me and told me they were running into issues with the build script.</p>
+<p>I ended up resubmitting with a <code>.ova</code> file that I built from a fresh copy of Ubuntu 20.04 and running the install script from the root account. Afterwards I just exported the image through VirtualBox.</p>
+<p>I did end up creating a highly complex build script that I will save for another post. It basically uses <a href="https://github.com/hashicorp/packer">Packer</a>, <a href="https://github.com/canonical/subiquity">subiquity</a>, and a bunch of scripts from the <a href="https://github.com/chef/bento">bento</a> project to automate the build process of the <code>.ova</code> virtual machine.</p>
+<p>I highly recommend just building the image manually to save a lot of headaches and maybe you'll even be able to get some sunlight today.</p>
+<h2>Conclusion</h2>
+<p>This might be a smart gig for you to take on. But remember to compartmentalize your time and not obesses over little details or do overly-complicated steps. Just make a plan and execute it.</p>
+  </section>
+
+  <br>
+
+  <script src="https://utteranc.es/client.js"
+          repo="hexcowboy/blog"
+          issue-term="pathname"
+          label="utterances"
+          theme="photon-dark"
+          crossorigin="anonymous"
+          async>
+  </script>
+</article>
+    </main>
+
+    <footer>
+      <section id="footer-title">
+        <p>Copyright © 2021</p>
+      </section>
+
+      <section id="footer-links">
+        <a href="https://twitter.com/hexcowboy" target="_blank">
+          <p class="twitter-handle">@hexcowboy</p>
+        </a>
+      </section>
+    </footer>
+
+    <section id="footer-logo">
+      <img src="https://cowboy.dev/theme/images/jaguar.svg">
+    </section>
+
+  </body>
+</html>
