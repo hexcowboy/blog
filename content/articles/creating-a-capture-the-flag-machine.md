@@ -12,6 +12,7 @@ Offensive Security recently started accepting user submissions. Hack the Box als
 ## Requirements
 
 This is no easy task without some previous knowledge of system scripting and automation. At a *bare minimum*, I would recommend having the following skills:
+
 - Bash scripting
 - Basic networking
 - Build automation
