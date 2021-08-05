@@ -7,7 +7,7 @@
     <link rel="canonical" href="">
 
     <!-- Site meta tags for SEO -->
-    <title>hexcowboy - Running Burp Suite in Docker</title>
+    <title>hexcowboy - 0xDEADBABE Generating Ethereum Vanity Addresses</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -89,71 +89,61 @@
     <main>
 <article>
   <section class="article-title">
-    <a href="./running-burp-suite-in-docker.html">
-      <h2>Running Burp Suite in Docker</h2>
+    <a href="./0xdeadbabe-generating-ethereum-vanity-addresses.html">
+      <h2>0xDEADBABE Generating Ethereum Vanity Addresses</h2>
     </a>
   </section>
 
   <section class="article-info">
     <span>hexcowboy</span>
     <span> · </span>
-    <time class="published-date" datetime="2021-06-13T10:30:00-05:00">Sun 13 June 2021  </time>
+    <time class="published-date" datetime="2021-08-05T08:00:00-05:00">Thu 05 August 2021  </time>
     <span> · </span>
     <time class="read-time">2 minutes</time>
   </section>
 
   <section class="article-content">
-    <p>On my soul quest to create <a href="https://github.com/hexcowboy/saloon">a fully featured penetration testing Docker container</a>, I came across a few issues.</p>
-<ol>
-<li>Docker doesn't run graphical applications on it's own</li>
-<li>The network proxy won't work unless the <code>8080</code> port is exposed</li>
-<li>You can't just install Burp Suite with <code>apt-get install burpsuite</code></li>
-</ol>
-<p>Apart from these issues, there isn't a maintained Burp Suite Community repository in the Docker Hub or on GitHub. I did manage to find a maintained <a href="https://github.com/koenrh/docker-burp-suite-pro">Burp Suite Professional Docker repo</a> on GitHub which I ended up forking.</p>
-<h2>Setup</h2>
-<p>To make this Docker container run GUI applications, we can make use of an X Server. On macOS, I used <a href="https://www.xquartz.org/">XQuartz</a> which was as simple as running</p>
-<div class="highlight"><pre><span></span><code>brew install --cask xquartz
+    <p>I recently acquired a new ethereum address starting with 0x22222222. The idea came to me when I was viewing ethereum transactions on Etherscan, where it shows the first 8 digits of each address in a transaction list.</p>
+<p>To get some inspiration on what your new Ethereum address can look like, brush up on your <a href="https://en.wikipedia.org/wiki/Hexspeak">Hexspeak</a> and reminisce in your hacked days of <code>DEADBEEF</code> buffer overflows.</p>
+<p>The methodology is simple in theory: you just need to brute force a bunch of ethereum public/private keypairs until you get a public key that matches your liking. Luckily, in practice, it is also easy thanks to a tool called <a href="https://github.com/johguse/profanity">profanity</a>. This tool utilizes your computer's GPU to brute force tens of millions of hashes per second.</p>
+<p>To get started, install the following dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Linux</span>
+$ apt update <span class="o">&amp;&amp;</span> apt install gcc make
+
+<span class="c1"># macOS</span>
+$ brew install gcc make
+
+<span class="c1"># Windows</span>
+<span class="c1"># Get WSL2 ffs</span>
 </code></pre></div>
 
-<p>For accepting connections on local host, one setting needs to be changed. In the XQuartz settings, enable <code>XQuartz</code> &gt; <code>Preferences</code> &gt; <code>Security</code> &gt; <code>Allow connections from network clients</code>.</p>
-<p><img alt="Allow connections from network clients needs to be enabled in the XQuartz settings" src="./images/allow-connections.png"></p>
-<p>Now the X Server can be started by running this command:</p>
-<div class="highlight"><pre><span></span><code>xhost + <span class="m">127</span>.0.0.1
+<p>To compile the source, follow these steps:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the repository and change to the directory</span>
+$ git clone <span class="s2">&quot;https://github.com/johguse/profanity.git&quot;</span> profanity <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
+
+<span class="c1"># Build it</span>
+$ make
 </code></pre></div>
 
-<p><em>Note that you need to run this command from your host terminal, not the XQuartz terminal.</em></p>
-<p>I won't go into covering how to run a local X Server on Windows or Linux, because Google <strong>does</strong> exist.</p>
-<h2>Running Burp Suite</h2>
-<h3>From Docker Hub</h3>
-<p>The prebuilt container can be retrieved from <a href="https://hub.docker.com/repository/docker/hexcowboy/burpsuite">Docker Hub</a>.</p>
-<div class="highlight"><pre><span></span><code>docker pull hexcowboy/burpsuite
-docker image tag hexcowboy/burpsuite burpsuite
+<p>Profanity is a pretty powerful tool. On my 2017 MacBook Pro, it was able to get around 11 MH/s, meaning 11 million hashes per second. It took me less than 10 minutes to get an address with 8 matching characters. With a dedicated GPU, you could likely get 20-30+ MH/s and start looking at cracking 9 or 10 digit public keys within minutes!</p>
+<p>A few examples of how you can use profanity to get the address of your liking are as follows:</p>
+<div class="highlight"><pre><span></span><code>$ ./profanity.x64 --leading <span class="m">2</span>
+-&gt; Addresses starting with 0x2222222
+
+$ ./profanity.x64 --matching DEADBEEF
+-&gt; Addresses starting with 0xDEADBEEF
+
+$ ./profanity.x64 --contract <span class="m">69696969</span>
+-&gt; Addresses that will generate their first contract beginning with 0x6969669
+
+$ ./profanity.x64 --matching badXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXbad
+-&gt; Addresses starting with 0xBAD and ending <span class="k">in</span> BAD
 </code></pre></div>
 
-<h3>Building the image</h3>
-<p>First, clone this <a href="https://github.com/hexcowboy/docker-burp-suite-community">GitHub repository</a> on your host:</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/hexcowboy/docker-burp-suite-community.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> docker-burp-suite-community
-</code></pre></div>
-
-<p>Then, build the Docker image using the following command.</p>
-<div class="highlight"><pre><span></span><code>docker build -t burpsuite .
-</code></pre></div>
-
-<p>While building the image, the latest JAR (Java ARchive) of Burp Suite Community is pulled from the PortSwigger portal.</p>
-<h2>Using Burp Suite Community</h2>
-<div class="highlight"><pre><span></span><code>docker run --rm <span class="se">\</span>
-  -p <span class="m">8080</span>:8080 <span class="se">\</span>
-  burpsuite
-</code></pre></div>
-
-<p>This command will run the container, expose port 8080 on the host to port 8080 on the container, and delete the container afterwards. You should see a new window open up in your X Server if you followed the setup instructions above.</p>
-<h3>Verify that the proxy is working by running the following command on your host:</h3>
-<div class="highlight"><pre><span></span><code>curl -x http://127.0.0.1:8080 http://example.com
-</code></pre></div>
-
-<h2>Conclusion</h2>
-<p>Software can easily be Dockerized. Burp Suite Community could likely take 5+ minutes to install manually, but by pulling a prebuilt Docker image it can take just seconds.</p>
-<p>The future of the west is Dockerized.</p>
+<p>When running these commands, Profanity will show you a bunch of addresses. Each new address will be equal to or better than score, meaning it matched as many characters as it could closest to your request. Don't expect to crack 12 characters any time in the near future, unless you own a Quantum computer in your basement (this article will not age well).</p>
+<p>A note before using these addresses: <strong>CHECK TO MAKE SURE THEY WORK</strong>. This means plug the private key into metamask and make sure the public key is what you expected it to be. You will also need to get the correct letter casing before using the addresses' public key. Profanity spits out all public keys in <em>lowercase</em>, but Ethereum smart contracts may require them to be in the correct checksum format. This means an <code>a</code> in your address is not the same as <code>A</code>. To get the correct address checksum, most wallets will automatically figure it out for you, including MetaMask.</p>
+<p>Once you've ensured that the address you got is working, you're ready to start using it in transactions!</p>
+<p>Happy London Fork 🔥</p>
   </section>
 
   <br>
