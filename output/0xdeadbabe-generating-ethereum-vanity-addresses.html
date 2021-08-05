@@ -103,11 +103,11 @@
   </section>
 
   <section class="article-content">
-    <p>I recently acquired a new ethereum address starting with 0x22222222. The idea came to me when I was viewing ethereum transactions on Etherscan, where it shows the first 8 digits of each address in a transaction list.</p>
-<p>To get some inspiration on what your new Ethereum address can look like, brush up on your <a href="https://en.wikipedia.org/wiki/Hexspeak">Hexspeak</a> and reminisce in your hacked days of <code>DEADBEEF</code> buffer overflows.</p>
+    <p>I recently acquired a new ethereum address starting with <code>0x22222222</code>. The idea came to me when I was viewing ethereum transactions on Etherscan, where it shows the first 8 digits of each address in a transaction list.</p>
+<p>To get some inspiration on what your new Ethereum address could look like, brush up on your <a href="https://en.wikipedia.org/wiki/Hexspeak">Hexspeak</a> and reminisce in your hacker days of <code>DEADBEEF</code> buffer overflows.</p>
 <p>The methodology is simple in theory: you just need to brute force a bunch of ethereum public/private keypairs until you get a public key that matches your liking. Luckily, in practice, it is also easy thanks to a tool called <a href="https://github.com/johguse/profanity">profanity</a>. This tool utilizes your computer's GPU to brute force tens of millions of hashes per second.</p>
 <p>To get started, install the following dependencies:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Linux</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Debian/Ubuntu</span>
 $ apt update <span class="o">&amp;&amp;</span> apt install gcc make
 
 <span class="c1"># macOS</span>
@@ -128,20 +128,27 @@ $ make
 <p>Profanity is a pretty powerful tool. On my 2017 MacBook Pro, it was able to get around 11 MH/s, meaning 11 million hashes per second. It took me less than 10 minutes to get an address with 8 matching characters. With a dedicated GPU, you could likely get 20-30+ MH/s and start looking at cracking 9 or 10 digit public keys within minutes!</p>
 <p>A few examples of how you can use profanity to get the address of your liking are as follows:</p>
 <div class="highlight"><pre><span></span><code>$ ./profanity.x64 --leading <span class="m">2</span>
--&gt; Addresses starting with 0x2222222
+<span class="c1"># -&gt; Addresses starting with 0x2222222</span>
 
 $ ./profanity.x64 --matching DEADBEEF
--&gt; Addresses starting with 0xDEADBEEF
+<span class="c1"># -&gt; Addresses starting with 0xDEADBEEF</span>
 
 $ ./profanity.x64 --contract <span class="m">69696969</span>
--&gt; Addresses that will generate their first contract beginning with 0x6969669
+<span class="c1"># -&gt; Addresses that will generate their first contract beginning with 0x6969669</span>
 
 $ ./profanity.x64 --matching badXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXbad
--&gt; Addresses starting with 0xBAD and ending <span class="k">in</span> BAD
+<span class="c1"># -&gt; Addresses starting with 0xBAD and ending in BAD</span>
 </code></pre></div>
 
-<p>When running these commands, Profanity will show you a bunch of addresses. Each new address will be equal to or better than score, meaning it matched as many characters as it could closest to your request. Don't expect to crack 12 characters any time in the near future, unless you own a Quantum computer in your basement (this article will not age well).</p>
-<p>A note before using these addresses: <strong>CHECK TO MAKE SURE THEY WORK</strong>. This means plug the private key into metamask and make sure the public key is what you expected it to be. You will also need to get the correct letter casing before using the addresses' public key. Profanity spits out all public keys in <em>lowercase</em>, but Ethereum smart contracts may require them to be in the correct checksum format. This means an <code>a</code> in your address is not the same as <code>A</code>. To get the correct address checksum, most wallets will automatically figure it out for you, including MetaMask.</p>
+<p>When running these commands, Profanity will show you a bunch of addresses. Each new address will be equal to or better than the previous score, meaning it matched as many characters as it could closest to your request. Don't expect to crack 12 characters any time in the near future, unless you own a Quantum computer in your basement (this article will not age well).</p>
+<p>A note before using these addresses: <strong>CHECK TO MAKE SURE THEY WORK</strong>. This means plug the private key into your wallet and make sure the public key is what you expected it to be. You will also need to get the correct letter casing before using the addresses' public key. Profanity spits out all public keys in <em>lowercase</em>, but Ethereum smart contracts may require them to be in the correct checksum format. This means an <code>a</code> in your address is not the same as <code>A</code>. To get the correct address checksum, most wallets will automatically figure it out for you, including MetaMask.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Profanity</span>
+0xdeadbeef
+
+<span class="c1"># Ethereum</span>
+0xDeaDBEef
+</code></pre></div>
+
 <p>Once you've ensured that the address you got is working, you're ready to start using it in transactions!</p>
 <p>Happy London Fork 🔥</p>
   </section>
