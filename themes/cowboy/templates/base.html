@@ -1,148 +1,205 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <!-- Browser meta for viewability -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="" />
 
-<head>
-  <!-- Browser meta for viewability -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="">
+    <!-- Site meta tags for SEO -->
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-  <!-- Site meta tags for SEO -->
-  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+    {% block meta %}{% endblock %}
 
-  <!-- Facebook Open Graph tags -->
-  <meta property="og:title" content="" />
-  <meta property="og:Section" content="" />
-  <meta property="og:url" content="" />
-  <meta property="og:image" content="" />
-  <meta property="og:site_name" content="" />
-  <meta property="fb:admins" content="" />
-  <meta property="og:description" content="" />
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/site.webmanifest"
+    />
+    <link
+      rel="mask-icon"
+      href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/safari-pinned-tab.svg"
+      color="#603cba"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico"
+    />
+    <meta name="msapplication-TileColor" content="#603cba" />
+    <meta
+      name="msapplication-config"
+      content="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#603cba" />
 
-  <!-- Twitter tags -->
-  <meta property="twitter:account_id" content="" />
-  <meta name="twitter:card" content="">
-  <meta name="twitter:site" content="">
-  <meta name="twitter:creator" content="">
-  <meta name="twitter:title" content="">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="">
-  <meta name="twitter:domain" content="">
+    <!-- Assets -->
+    <link rel="shortcut icon" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css"
+    />
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon-16x16.png">
-  <link rel="manifest" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/site.webmanifest">
-  <link rel="mask-icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/safari-pinned-tab.svg" color="#603cba">
-  <link rel="shortcut icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico">
-  <meta name="msapplication-TileColor" content="#603cba">
-  <meta name="msapplication-config" content="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/browserconfig.xml">
-  <meta name="theme-color" content="#603cba">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Assets -->
-  <link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css">
+    <!-- Atom and RSS feeds -->
+    {% if FEED_ALL_ATOM %}
+    <link
+      href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{
+        FEED_ALL_ATOM_URL
+      }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}"
+      type="application/atom+xml"
+      rel="alternate"
+      title="{{ SITENAME }} Full Atom Feed"
+    />
+    {% endif %} {% if FEED_ALL_RSS %}
+    <link
+      href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{
+        FEED_ALL_RSS_URL
+      }}{% else %}{{ FEED_ALL_RSS }}{% endif %}"
+      type="application/rss+xml"
+      rel="alternate"
+      title="{{ SITENAME }} Full RSS Feed"
+    />
+    {% endif %} {% if FEED_ATOM %}
+    <link
+      href="{{ FEED_DOMAIN }}/{%if FEED_ATOM_URL %}{{
+        FEED_ATOM_URL
+      }}{% else %}{{ FEED_ATOM }}{% endif %}"
+      type="application/atom+xml"
+      rel="alternate"
+      title="{{ SITENAME }} Atom Feed"
+    />
+    {% endif %} {% if FEED_RSS %}
+    <link
+      href="{{ FEED_DOMAIN }}/{% if FEED_RSS_URL %}{{
+        FEED_RSS_URL
+      }}{% else %}{{ FEED_RSS }}{% endif %}"
+      type="application/rss+xml"
+      rel="alternate"
+      title="{{ SITENAME }} RSS Feed"
+    />
+    {% endif %} {% if CATEGORY_FEED_ATOM and category %}
+    <link
+      href="{{
+        FEED_DOMAIN
+      }}/{% if CATEGORY_FEED_ATOM_URL %}{{ CATEGORY_FEED_ATOM_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}{% endif %}"
+      type="application/atom+xml"
+      rel="alternate"
+      title="{{ SITENAME }} Categories Atom Feed"
+    />
+    {% endif %} {% if CATEGORY_FEED_RSS and category %}
+    <link
+      href="{{
+        FEED_DOMAIN
+      }}/{% if CATEGORY_FEED_RSS_URL %}{{ CATEGORY_FEED_RSS_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}{% endif %}"
+      type="application/rss+xml"
+      rel="alternate"
+      title="{{ SITENAME }} Categories RSS Feed"
+    />
+    {% endif %} {% if TAG_FEED_ATOM and tag %}
+    <link
+      href="{{
+        FEED_DOMAIN
+      }}/{% if TAG_FEED_ATOM_URL %}{{ TAG_FEED_ATOM_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_ATOM.format(slug=tag.slug) }}{% endif %}"
+      type="application/atom+xml"
+      rel="alternate"
+      title="{{ SITENAME }} Tags Atom Feed"
+    />
+    {% endif %} {% if TAG_FEED_RSS and tag %}
+    <link
+      href="{{
+        FEED_DOMAIN
+      }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}"
+      type="application/rss+xml"
+      rel="alternate"
+      title="{{ SITENAME }} Tags RSS Feed"
+    />
+    {% endif %}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XVN0X0SFF1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XVN0X0SFF1");
+    </script>
+  </head>
 
-  <!-- Atom and RSS feeds -->
-  {% if FEED_ALL_ATOM %}
-  <link
-    href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}"
-    type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
-  {% endif %}
-  {% if FEED_ALL_RSS %}
-  <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}"
-    type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
-  {% endif %}
-  {% if FEED_ATOM %}
-  <link href="{{ FEED_DOMAIN }}/{%if FEED_ATOM_URL %}{{ FEED_ATOM_URL }}{% else %}{{ FEED_ATOM }}{% endif %}"
-    type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
-  {% endif %}
-  {% if FEED_RSS %}
-  <link href="{{ FEED_DOMAIN }}/{% if FEED_RSS_URL %}{{ FEED_RSS_URL }}{% else %}{{ FEED_RSS }}{% endif %}"
-    type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
-  {% endif %}
-  {% if CATEGORY_FEED_ATOM and category %}
-  <link
-    href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_ATOM_URL %}{{ CATEGORY_FEED_ATOM_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}{% endif %}"
-    type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
-  {% endif %}
-  {% if CATEGORY_FEED_RSS and category %}
-  <link
-    href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_RSS_URL %}{{ CATEGORY_FEED_RSS_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}{% endif %}"
-    type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
-  {% endif %}
-  {% if TAG_FEED_ATOM and tag %}
-  <link
-    href="{{ FEED_DOMAIN }}/{% if TAG_FEED_ATOM_URL %}{{ TAG_FEED_ATOM_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_ATOM.format(slug=tag.slug) }}{% endif %}"
-    type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />
-  {% endif %}
-  {% if TAG_FEED_RSS and tag %}
-  <link
-    href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}"
-    type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
-  {% endif %}
+  <body>
+    <header>
+      <div id="title">
+        <!-- <h1 class="title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1> -->
+        <a href="{{ SITEURL }}/">
+          <img
+            class="logo"
+            src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/cowboy.jpg"
+          />
+        </a>
+      </div>
+      <nav id="socials">
+        {% for social in SOCIAL %}
+        <a href="{{ social[1] | lower }}" target="_blank">
+          <i class="fab fa-{{ social[0] | lower }}"></i>
+        </a>
+        {% endfor %}
+      </nav>
+    </header>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVN0X0SFF1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XVN0X0SFF1');
-  </script>
+    <main>{% block content %} {% endblock %}</main>
 
-</head>
+    <footer>
+      <section id="footer-title">
+        <p>Copyright © {{ COPYRIGHT_YEAR }}</p>
+      </section>
 
-<body>
-  <header>
-    <div id="title">
-      <!-- <h1 class="title"><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1> -->
-      <a href="{{ SITEURL }}/">
-        <img class="logo" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/morepunks955-red.png">
-      </a>
-    </div>
-    <nav id="socials">
-      {% for social in SOCIAL %}
-      <a href="{{ social[1] | lower }}" target="_blank">
-        <i class="fab fa-{{ social[0] | lower }}"></i>
-      </a>
-      {% endfor %}
-    </nav>
-  </header>
+      <section id="footer-links">
+        <a href="{{ SITE_CONTACT[1] }}" target="_blank">
+          <p class="twitter-handle">{{ SITE_CONTACT[0] }}</p>
+        </a>
+      </section>
+    </footer>
 
-  <main>
-    {% block content %}
-    {% endblock %}
-  </main>
-
-  <footer>
-    <section id="footer-title">
-      <p>Copyright © {{ COPYRIGHT_YEAR }}</p>
+    <section id="footer-logo">
+      <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/jaguar.svg" />
     </section>
-
-    <section id="footer-links">
-      <a href="{{ SITE_CONTACT[1] }}" target="_blank">
-        <p class="twitter-handle">{{ SITE_CONTACT[0] }}</p>
-      </a>
-    </section>
-  </footer>
-
-  <section id="footer-logo">
-    <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/jaguar.svg">
-  </section>
-
-</body>
-
+  </body>
 </html>

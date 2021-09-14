@@ -3,7 +3,7 @@
 from datetime import date
 
 AUTHOR = "hexcowboy"
-SITENAME = "hexcowboy"
+SITENAME = "cowboy.dev"
 SITEURL = ""
 
 THEME = "themes/cowboy"
