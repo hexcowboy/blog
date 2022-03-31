@@ -5,9 +5,9 @@ Tags: ethereum, blockchain
 Author: hexcowboy
 Summary: Ideating on the concept of connecting social media and identity to your blockchain address
 
-A long-lasting issue on the blockchain has been reliably linking your identity to your wallet. There are many reason you may want to do this, including:
+A long outstanding issue on the blockchain has been reliably linking your identity to your wallet. There are many reason you may want to do this, including:
 
-- Paying internet money to a social media account (and not your 40 character hex address)
+- Paying internet money to a social media account (and not a 40 character hex address)
 - Getting the identity of a wallet address in order to contact the owner
 - Using assets like NFTs to gain access to exclusive content based on reputation or previous social interactions
 
@@ -122,18 +122,23 @@ _The code handles issues with EIP-115 not being implemented, which Ethers.js (us
 A few questions and answers I've made up to help better understand the reasons for my implementations.
 
 > **Q**: Why don't we use something like an oracle to submit the user's username to the blockchain?
+
 > **A**: By nature oracles are not trustless. It is possible to do a somewhat decentralized implementation using oracle networks but it's a far more complicated topic and even networks like Chainlink don't provide solutions for decentralized API calls in this fashion.
 
 > **Q**: Why can't the proof post be immutable?
+
 > **A**: The proof has to be as close as possible to the nature of the blockchain for it to play by the blockchain's rules.
 
 > **Q**: Can't I just submit a proof to someone else's Tweet (proof post) to claim their Twitter identity?
+
 > **A**: No, since the public key is always cryptographically recovered from the signed message it's not possible to spoof it.
 
 > **Q**: If for some reason my account is deleted or my proof post is deleted out of my control, is my identity still valid?
+
 > **A**: If the proof post is not accessible to verifiers for _any_ reason, it's not valid.
 
 > **Q**: How would documents like government IDs be validated?
+
 > **A**: That's a good question, and if you think of a solution we should get in contact.
 
 ### Additional use cases for identity proofs
