@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Browser meta for viewability -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="" />
+
+    <!-- Site meta tags for SEO -->
+    <title>cowboy.dev - Verifying Identification on the Blockchain</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+<!-- Facebook Open Graph tags -->
+<meta property="og:title" content="Verifying Identification on the Blockchain" />
+<meta property="og:Section" content="" />
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="cowboy.dev" />
+<meta property="fb:admins" content="" />
+<meta property="og:description" content="" />
+
+<!-- Twitter tags -->
+<meta property="twitter:account_id" content="" />
+<meta name="twitter:card" content="" />
+<meta name="twitter:site" content="cowboy.dev" />
+<meta name="twitter:creator" content="hexcowboy" />
+<meta name="twitter:title" content="Verifying Identification on the Blockchain" | striptags />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:domain" content="" />
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://cowboy.dev/theme/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cowboy.dev/theme/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://cowboy.dev/theme/images/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="https://cowboy.dev/theme/images/site.webmanifest"
+    />
+    <link
+      rel="mask-icon"
+      href="https://cowboy.dev/theme/images/safari-pinned-tab.svg"
+      color="#603cba"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://cowboy.dev/theme/images/favicon.ico"
+    />
+    <meta name="msapplication-TileColor" content="#603cba" />
+    <meta
+      name="msapplication-config"
+      content="https://cowboy.dev/theme/images/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#603cba" />
+
+    <!-- Assets -->
+    <link rel="shortcut icon" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cowboy.dev/theme/css/main.css"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Atom and RSS feeds -->
+       
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XVN0X0SFF1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XVN0X0SFF1");
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <div id="title">
+        <!-- <h1 class="title"><a href="https://cowboy.dev/">cowboy.dev</a></h1> -->
+        <a href="https://cowboy.dev/">
+          <img
+            class="logo"
+            src="https://cowboy.dev/theme/images/cowboy.jpg"
+          />
+        </a>
+      </div>
+      <nav id="socials">
+        <a href="https://discordapp.com/users/418557177825853443" target="_blank">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://github.com/hexcowboy" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/hexcowboy" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </nav>
+    </header>
+
+    <main><article>
+  <section class="article-title">
+    <a href="https://cowboy.dev/verifying-identification-on-the-blockchain.html">
+      <h2>Verifying Identification on the Blockchain</h2>
+    </a>
+  </section>
+
+  <section class="article-info">
+    <span>hexcowboy</span>
+    <span> · </span>
+    <time class="published-date" datetime="2022-03-30T22:30:00-05:00">Wed 30 March 2022  </time>
+    <span> · </span>
+    <time class="read-time">7 minutes</time>
+  </section>
+
+  <section class="article-content">
+    <p>A long-lasting apparent issue on the blockchain has been reliably linking your identity to your wallet. There are many reason you may want to do this, including:</p>
+<ul>
+<li>Having other people pay you money based on just the knowledge of your identity (and not your 40 character hex address)</li>
+<li>Getting the identity of a hex address in order to contact the owner</li>
+<li>Using assets like NFTs to gain access to exclusive content based on reputation or previous social interactions</li>
+</ul>
+<p>Other projects have tried to solve this issue. An example would be ENS, where you may create a new identity similar to a classic domain name like <code>hexcowboy.eth</code>. This approach is the most hollistic but ignores a few important things.</p>
+<ol>
+<li>Having a domain name does not appeal to everyone's identity</li>
+<li>Not everybody wants to pay a subscription cost to maintain their identity</li>
+<li>Most people already have built reputation on other platforms with their identity</li>
+</ol>
+<h2>Using Pre-existing Services to Identify Yourself</h2>
+<blockquote>
+<p>The majority of this article will use Twitter as an example. There are obviously other use cases like other social media accounts or even government issued documents.</p>
+</blockquote>
+<p>For almost two decades now, millions of people have been building reputation on their social media accounts. People are able to express themselves through their online identity. In many cases this online identity provides perks to them such as access to exclusive chatrooms, invitations to private events, or sometimes just clout. It would only make sense to use these pre-existing identities as leverage to onboard new users.</p>
+<p>To do this, a simple model can be used. The process is as follows:</p>
+<ol>
+<li>A <strong>proof</strong> is submitted to the user's social media account containing a signed message containing the username (or user ID, whichever is immutable)</li>
+<li>The ID of the post is submitted to a smart contract</li>
+<li>Anyone may reach out to the smart contract to retrieve the proof ID, where they may then use the social media APIs to verify the signed message's signer</li>
+</ol>
+<p>A few caveats:</p>
+<ul>
+<li>The proof must always remain available, meaning that if the proof post is ever deleted, the account is ever made private, or in the case of any other form of censorship, it would trigger the verifiers to fail</li>
+<li>The verifier of the proof will usually have to work off-chain, as it's not possible to trustlessly reach out to APIs from the blockchain virtual machine</li>
+</ul>
+<h2>Technical Specification</h2>
+<h3>Creating an Identity Proof</h3>
+<p>A proof contains an <a href="https://eips.ethereum.org/EIPS/eip-191">EIP-191</a> signed message Using Ethers.js as a client library, a user can sign a message with their wallet:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">provider</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">Web3Provider</span><span class="p">(</span><span class="nx">web3Provider</span><span class="p">.</span><span class="nx">provider</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">signer</span> <span class="o">=</span> <span class="nx">provider</span><span class="p">.</span><span class="nx">getSigner</span><span class="p">();</span>
+<span class="nx">signer</span><span class="p">.</span><span class="nx">signMessage</span><span class="p">(</span><span class="s2">&quot;hexcowboy&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// This is pseudo-code representing a call to the Twitter API to post a tweet with the signed message</span>
+  <span class="kd">const</span> <span class="nx">tweet</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">twitterClient</span><span class="p">.</span><span class="nx">tweet</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+  <span class="c1">// The Tweet ID would be used to submit the proof</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Tweet ID: &quot;</span> <span class="o">+</span> <span class="nx">tweet</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3>Submitting an Identity Proof</h3>
+<p>The following is an example of how a Twitter proof registry could be implemented:</p>
+<div class="highlight"><pre><span></span><code><span class="k">contract</span><span class="w"> </span><span class="ni">TwitterRegistry</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">bytes32</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">address</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span>records<span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">ProofSubmitted</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_from<span class="p">,</span><span class="w"> </span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_proof<span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">submitProof</span><span class="p">(</span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">data</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span>records<span class="p">[</span>data<span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span>emit<span class="w"> </span>ProofSubmitted<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span>data<span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>This is similar to an ERC-721 implementation where a "token" is mapped to an address. In this case, the bytes32 representation of the post ID is mapped to an address and a <code>ProofSubmitted</code> event is emitted so indexers can easily find all proofs a specific address has submitted.</p>
+<h3>Verifying a Proof</h3>
+<p>Anyone can verify a proof if they need to. Obviously users can submit arbitrary or malicious data to claim their proof but because signed messages use cryptography, the signer's address can be recovered and in turn prevent fraud.</p>
+<p>Here is a Golang implementation to verify a proof:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">helpers</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;errors&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;strconv&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;github.com/ethereum/go-ethereum/common/hexutil&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/ethereum/go-ethereum/crypto&quot;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+
+<span class="c1">// Provided the original message text (`message`) and the signed messaged (`signedMessage`), returns the signer&#39;s public key as a string</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">VerifyMessage</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">signedMessage</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Hash the unsigned message using EIP-191 message format</span><span class="w"></span>
+<span class="w">    </span><span class="nx">hashedMessage</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;\x19Ethereum Signed Message:\n&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">message</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">hash</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">Keccak256Hash</span><span class="p">(</span><span class="nx">hashedMessage</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Get the bytes of the signed message</span><span class="w"></span>
+<span class="w">    </span><span class="nx">decodedMessage</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">hexutil</span><span class="p">.</span><span class="nx">MustDecode</span><span class="p">(</span><span class="nx">signedMessage</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Handles cases where EIP-115 is not implemented (most wallets don&#39;t implement it)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">decodedMessage</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">27</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">decodedMessage</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">decodedMessage</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">27</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Recover a public key from the signed message</span><span class="w"></span>
+<span class="w">    </span><span class="nx">sigPublicKeyECDSA</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">SigToPub</span><span class="p">(</span><span class="nx">hash</span><span class="p">.</span><span class="nx">Bytes</span><span class="p">(),</span><span class="w"> </span><span class="nx">decodedMessage</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">sigPublicKeyECDSA</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;Could not get a public get from the message signature&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">PubkeyToAddress</span><span class="p">(</span><span class="o">*</span><span class="nx">sigPublicKeyECDSA</span><span class="p">).</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p><em>The code handles issues with EIP-115 not being implemented, which Ethers.js (used in the "Creating an Identity Proof" section) does not.</em></p>
+<h2>Additional Questions and Ideas</h2>
+<p>A few questions and answers I've made up to help better understand the reasons for my implementations.</p>
+<blockquote>
+<p><strong>Q</strong>: Why don't we use something like an oracle to submit the user's username to the blockahin?
+<strong>A</strong>: By nature oracles are not trustless. It is possible to do a somewhat decentralized implementation using oracle networks but it's a far more complicated topic and even networks like Chainlink don't provide solutions for decentralized API calls in this fashion.</p>
+<p><strong>Q</strong>: Why can't the proof post be immutable?
+<strong>A</strong>: The proof has to be as close as possible to the nature of the blockchain for it to play by the blockchain's rules.</p>
+<p><strong>Q</strong>: Can't I just submit a proof to someone else's Tweet (proof post) to claim their Twitter identity?
+<strong>A</strong>: No, since the public key is always cryptographically recovered from the signed message it's not possible to spoof it.</p>
+<p><strong>Q</strong>: If for some reason my account is deleted or my proof post is deleted out of my control, is my identity still valid?
+<strong>A</strong>: If the proof post is not accessible to verifiers for <em>any</em> reason, it's not valid.</p>
+<p><strong>Q</strong>: How would documents like government IDs be validated?
+<strong>A</strong>: That's a good question, and if you think of a solution we should get in contact.</p>
+</blockquote>
+<h3>Additional use cases for identity proofs</h3>
+<ul>
+<li>Airdrops for people who have completed a specific social interaction like followed an account, tweeted about a topic, or similar</li>
+<li>Easily link to social profiles on NFT marketplaces</li>
+<li>Exclusive access to Discord servers</li>
+<li>Look up a social media user's NFTs</li>
+</ul>
+  </section>
+
+  <br>
+
+  <script src="https://utteranc.es/client.js"
+          repo="hexcowboy/blog"
+          issue-term="pathname"
+          label="utterances"
+          theme="photon-dark"
+          crossorigin="anonymous"
+          async>
+  </script>
+</article>
+</main>
+
+    <footer>
+      <section id="footer-title">
+        <p>Copyright © 2022</p>
+      </section>
+
+      <section id="footer-links">
+        <a href="https://twitter.com/hexcowboy" target="_blank">
+          <p class="twitter-handle">@hexcowboy</p>
+        </a>
+      </section>
+    </footer>
+
+    <section id="footer-logo">
+      <img src="https://cowboy.dev/theme/images/jaguar.svg" />
+    </section>
+  </body>
+</html>
