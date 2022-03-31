@@ -5,13 +5,13 @@ Tags: ethereum, blockchain
 Author: hexcowboy
 Summary: Ideating on the concept of connecting social media and identity to your blockchain address
 
-A long-lasting apparent issue on the blockchain has been reliably linking your identity to your wallet. There are many reason you may want to do this, including:
+A long-lasting issue on the blockchain has been reliably linking your identity to your wallet. There are many reason you may want to do this, including:
 
-- Having other people pay you money based on just the knowledge of your identity (and not your 40 character hex address)
-- Getting the identity of a hex address in order to contact the owner
+- Paying internet money to a social media account (and not your 40 character hex address)
+- Getting the identity of a wallet address in order to contact the owner
 - Using assets like NFTs to gain access to exclusive content based on reputation or previous social interactions
 
-Other projects have tried to solve this issue. An example would be ENS, where you may create a new identity similar to a classic domain name like `hexcowboy.eth`. This approach is the most hollistic but ignores a few important things.
+Other projects have tried to solve this issue. An example would be ENS, where you may create a new identity similar to a classic domain name like `hexcowboy.eth`. This approach is the most holistic but ignores a few important things.
 
 1. Having a domain name does not appeal to everyone's identity
 2. Not everybody wants to pay a subscription cost to maintain their identity
@@ -121,7 +121,7 @@ _The code handles issues with EIP-115 not being implemented, which Ethers.js (us
 
 A few questions and answers I've made up to help better understand the reasons for my implementations.
 
-> **Q**: Why don't we use something like an oracle to submit the user's username to the blockahin?
+> **Q**: Why don't we use something like an oracle to submit the user's username to the blockchain?
 > **A**: By nature oracles are not trustless. It is possible to do a somewhat decentralized implementation using oracle networks but it's a far more complicated topic and even networks like Chainlink don't provide solutions for decentralized API calls in this fashion.
 
 > **Q**: Why can't the proof post be immutable?
